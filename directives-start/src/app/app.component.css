@@ -1,0 +1,13 @@
+.container {
+  margin-top: 30px;
+}
+
+.odd {
+  color: #f9f9f9;
+  background-color: #D9534F;
+}
+
+.even {
+  color: #f9f9f9;
+  background-color: #F0AD4E;
+}

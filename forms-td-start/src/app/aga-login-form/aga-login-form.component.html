@@ -1,0 +1,80 @@
+<div class="row">
+    <div class="container">
+        <div class="col-md-6 col-md-offset-3">
+
+            <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm);">
+                <legend>User login</legend>
+
+                <div class="form-group"
+                     ngModelGroup="validUsername"
+                     #validUsername="ngModelGroup">
+                    <label>Username</label>
+                    <input type="text"
+                           class="form-control"
+                           name="username"
+                           required
+                           minlength="4"
+                           maxlength="24"
+                           #username="ngModel"
+                           [(ngModel)]="user.username">
+                </div>
+
+                <div class="form-group"
+                     ngModelGroup="validEmail"
+                     #validEmail="ngModelGroup">
+                    <label>Email</label>
+                    <input type="email"
+                           class="form-control"
+                           email
+                           name="email"
+                           ngModel>
+                </div>
+
+                <div class="form-group"
+                     ngModelGroup="validPass"
+                     #validPass="ngModelGroup">
+                    <label>Password</label>
+                    <input type="password"
+                           class="form-control"
+                           name="password"
+                           required
+                           [(ngModel)]="password">
+                </div>
+
+
+                <div class="col-sm-12 clicks">
+                    <div class="col-sm-6">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox"
+                                       (click)="onShowPassword();">
+                                Show password
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox"
+                                       [ngModel]="user.rememberMe"
+                                       name="rememberMe"
+                                       (click)="onRememberMe();">
+                                Remember me?
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <br>
+                <button type="submit"
+                        class="btn btn-primary submit">
+                    Submit
+                </button>
+            </form>
+            <p class="alert alert-warning password" *ngIf="showPassword">Password: <b>{{ password }}</b></p>
+            <p class="help-block alert alert-danger text-center" *ngIf="!validUsername.valid && validUsername.touched">username is invalid</p>
+            <p class="help-block alert alert-danger text-center" *ngIf="!validEmail.valid && validEmail.touched">Email is invalid</p>
+            <p class="help-block alert alert-danger text-center" *ngIf="!validPass.valid && validPass.touched">Password is invalid</p>
+        </div>
+    </div>
+</div>

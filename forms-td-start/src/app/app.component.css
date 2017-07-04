@@ -1,0 +1,11 @@
+.container {
+  margin-top: 30px;
+}
+
+input.ng-invalid {
+    background-color: #f9dedb;
+}
+
+button.suggest-btn {
+    float: right;
+}

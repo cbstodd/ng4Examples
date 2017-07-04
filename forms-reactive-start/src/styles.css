@@ -1,0 +1,11 @@
+/* You can add global styles to this file, and also import other style files */
+
+input.ng-invalid.ng-touched {
+    /*background-color: #ffeded;*/
+    background-color: #F2DEDE;
+}
+
+button.fill-form {
+    float: right;
+}
+

@@ -1,0 +1,24 @@
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+            <h1>{{ appName | async }}</h1>
+            <hr>
+            <button class="btn btn-success pull-right"
+                    (click)="onSaveServers();">
+                Save servers
+            </button>
+            <button class="btn btn-default pull-right"
+                    (click)="onGetServers();">
+                Get servers
+            </button>
+            <input type="text" #serverName>
+            <button class="btn btn-primary" (click)="onAddServer(serverName.value)">Add Server</button>
+
+            <br>
+            <br>
+            <ul class="list-group" *ngFor="let server of servers">
+                <li class="list-group-item">{{ server.name }} (ID: {{ server.id }})</li>
+            </ul>
+        </div>
+    </div>
+</div>

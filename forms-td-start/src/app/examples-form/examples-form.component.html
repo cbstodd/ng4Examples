@@ -1,0 +1,91 @@
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+            <legend>Template-Driven Form</legend>
+            <form (ngSubmit)="onSubmit(tdForm);" #tdForm="ngForm">
+                <div id="user-data"
+                     ngModelGroup="userData"
+                     #userData="ngModelGroup">
+                    <button class="btn btn-default suggest-btn"
+                            type="button"
+                            (click)="replaceFormInputs();">Replace form with defaults
+                    </button>
+                    <button class="btn btn-default suggest-btn"
+                            type="button"
+                            (click)="fillFormInputs();">Fill form with defaults
+                    </button>
+                    <br>
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text"
+                               id="username"
+                               required
+                               class="form-control"
+                               ngModel
+                               name="username">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Mail</label>
+                        <input
+                          type="email"
+                          id="email"
+                          class="form-control"
+                          name="email"
+                          required
+                          email
+                          ngModel
+                          #email="ngModel">
+                    </div>
+                    <span class="help-block alert alert-warning"
+                          *ngIf="!email.valid && email.touched">Please enter a valid email address.</span>
+                </div>
+                <div class="form-group">
+                    <label for="secret">Secret Questions</label>
+                    <select
+                      id="secret"
+                      class="form-control"
+                      [ngModel]="question"
+                      name="secret">
+                        <!-- * options * -->
+                        <option value="pet">Your first Pet?</option>
+                        <option value="teacher">Your first teacher?</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <textarea name="answer"
+                              class="form-control"
+                              rows="3"
+                              [(ngModel)]="answer">
+                    </textarea>
+                </div>
+                <div class="radio" *ngFor="let gender of genders">
+                    <label>
+                        <input
+                          type="radio"
+                          name="gender"
+                          ngModel
+                          [value]="gender"/>
+                    </label>
+
+                    {{ gender }}
+                </div>
+                <button class="btn btn-primary"
+                        type="submit"
+                        [disabled]="!tdForm.valid">Submit
+                </button>
+            </form>
+        </div>
+    </div>
+    <p class="help-block alert alert-danger text-center col-sm-6 col-sm-offset-3" *ngIf="!userData.valid && userData.touched">Username and/or Email are invalid</p>
+</div>
+
+
+<div class="container well" *ngIf="submitted">
+    <div class="alert alert-info">
+        <h3>Your data</h3>
+        <hr>
+        <h4>Username: {{ user.username }}</h4>
+        <h4>email: {{ user.email }}</h4>
+        <h4>Sex: {{ user.sex }}</h4>
+    </div>
+</div>
